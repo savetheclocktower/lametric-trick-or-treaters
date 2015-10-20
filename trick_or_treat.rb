@@ -59,7 +59,7 @@ get '/reset' do
 end
 
 get '/lametric' do
-  json = JSON.parse( JSON.encode(LAMETRIC_JSON) )
+  json = JSON.dump( JSON.encode(LAMETRIC_JSON) )
   json['frames'].push({
     index: 4,
     text: get_count.to_s,

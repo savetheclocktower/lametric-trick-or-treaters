@@ -8,7 +8,21 @@
 <script type="text/javascript">
   $('increment').on('click', function () {
     new Ajax.Updater('count', '/increment', {
+      
       requestHeaders: { 'Accept': 'text/html' }
     });
   });
 </script>
+
+<style type="text/css" media="screen">
+  #count {
+    font-size: 72px;
+    text-align: center;
+  }
+  
+  #increment {
+    width: 100%;
+    font-size: 24px;
+    padding: 10px;
+  }
+</style>

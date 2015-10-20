@@ -5,6 +5,7 @@ require 'json'
 $redis = Redis.new( url: ENV['REDIS_URL'] )
 
 KEY = 'trick_or_treaters'
+GHOST_ICON = 'a77'
 
 
 LAMETRIC_JSON = {
@@ -12,22 +13,22 @@ LAMETRIC_JSON = {
     {
       index: 0,
       text: "trick",
-      icon: ""
+      icon: GHOST_ICON
     },
     {
       index: 1,
       text: "or",
-      icon: ""
+      icon: GHOST_ICON
     },
     {
       index: 2,
       text: "treat",
-      icon: ""
+      icon: GHOST_ICON
     },
     {
       index: 3,
       text: "served:",
-      icon: ""
+      icon: GHOST_ICON
     }
   ]
 }
@@ -63,7 +64,7 @@ get '/lametric' do
   json['frames'].push({
     index: 4,
     text: get_count.to_s,
-    icon: ""
+    icon: GHOST_ICON
   })
   
   JSON.generate(json, indent: " ", space: " ")

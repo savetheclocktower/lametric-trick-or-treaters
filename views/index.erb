@@ -5,6 +5,6 @@
 
 <script type="text/javascript">
   $('increment').on('click', function () {
-    new Ajax.Updater('/increment', 'count');
+    new Ajax.Updater('count', '/increment');
   });
 </script>

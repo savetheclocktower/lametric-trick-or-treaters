@@ -66,5 +66,5 @@ get '/lametric' do
     icon: ""
   })
   
-  JSON.dump(json)
+  JSON.generate(json, indent: " ", space: " ")
 end

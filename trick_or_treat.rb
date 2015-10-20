@@ -1,3 +1,11 @@
+# An app for keeping track of trick-or-treaters.
+# 
+# Hit /increment to increment the trick-or-treater count.
+# Hit /set to change the count manually.
+# Hit /reset to change it to 0.
+# 
+# The /lametric endpoint is what the device hits. It expects formatted JSON.
+
 require 'sinatra'
 require 'redis'
 require 'json'
@@ -6,7 +14,6 @@ $redis = Redis.new( url: ENV['REDIS_URL'] )
 
 KEY = 'trick_or_treaters'
 GHOST_ICON = 'a77'
-
 
 LAMETRIC_JSON = {
   frames: [
@@ -31,7 +38,7 @@ def reset_count
 end
 
 get '/' do
-  "Hello World!"
+  erb :index
 end
 
 get '/increment' do
@@ -50,10 +57,10 @@ get '/set/:value' do
 end
 
 get '/lametric' do
+  # Quick-and-dirty way of duplicating the data structure.
   json = JSON.parse( JSON.dump(LAMETRIC_JSON) )
   json['frames'].push({
     index: 1,
-    # text: "served: #{get_count.to_s}",
     text: "#{get_count.to_s} served",
     icon: nil
   })

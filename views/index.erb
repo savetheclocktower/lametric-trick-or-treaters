@@ -1,0 +1,10 @@
+
+<p id="count"></p>
+
+<button id="increment">Increment</button>
+
+<script type="text/javascript">
+  $('increment').on('click', function () {
+    new Ajax.Updater('/increment', 'count');
+  });
+</script>

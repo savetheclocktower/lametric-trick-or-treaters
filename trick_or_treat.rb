@@ -44,6 +44,11 @@ get '/reset' do
   get_count.to_s
 end
 
+get '/set/:value' do
+  $redis.set(KEY, params['value'].to_i)
+  get_count.to_s
+end
+
 get '/lametric' do
   json = JSON.parse( JSON.dump(LAMETRIC_JSON) )
   json['frames'].push({

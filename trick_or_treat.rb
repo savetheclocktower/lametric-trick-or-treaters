@@ -41,6 +41,11 @@ get '/' do
   erb :index, { locals: { count: get_count.to_s } }
 end
 
+post '/increment' do
+  increment_count
+  get_count.to_s
+end
+
 get '/increment' do
   increment_count
   get_count.to_s

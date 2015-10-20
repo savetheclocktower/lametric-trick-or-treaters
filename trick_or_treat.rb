@@ -53,7 +53,8 @@ get '/lametric' do
   json = JSON.parse( JSON.dump(LAMETRIC_JSON) )
   json['frames'].push({
     index: 1,
-    text: "served: #{get_count.to_s}",
+    # text: "served: #{get_count.to_s}",
+    text: "#{get_count.to_s} served",
     icon: nil
   })
   

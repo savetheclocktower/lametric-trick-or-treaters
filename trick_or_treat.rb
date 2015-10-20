@@ -38,7 +38,7 @@ def reset_count
 end
 
 get '/' do
-  erb :index
+  erb :index, { locals: { count: get_count.to_s } }
 end
 
 get '/increment' do

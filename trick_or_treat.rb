@@ -64,6 +64,7 @@ end
 
 get '/lametric' do
   # TEMP: What is requesting this so often?
+  puts "USER AGENT: #{request.user_agent}"
   puts "REQUEST DUMP:"
   pp request.env
   

@@ -12,22 +12,7 @@ LAMETRIC_JSON = {
   frames: [
     {
       index: 0,
-      text: "trick",
-      icon: GHOST_ICON
-    },
-    {
-      index: 1,
-      text: "or",
-      icon: GHOST_ICON
-    },
-    {
-      index: 2,
-      text: "treat",
-      icon: GHOST_ICON
-    },
-    {
-      index: 3,
-      text: "served:",
+      text: "trick or treat",
       icon: GHOST_ICON
     }
   ]
@@ -62,9 +47,9 @@ end
 get '/lametric' do
   json = JSON.parse( JSON.dump(LAMETRIC_JSON) )
   json['frames'].push({
-    index: 4,
-    text: get_count.to_s,
-    icon: GHOST_ICON
+    index: 1,
+    text: "served: #{get_count.to_s}",
+    icon: nil
   })
   
   JSON.generate(json, indent: " ", space: " ")

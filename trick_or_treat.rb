@@ -9,6 +9,7 @@
 require 'sinatra'
 require 'redis'
 require 'json'
+require 'pp'
 
 $redis = Redis.new( url: ENV['REDIS_URL'] )
 
@@ -62,6 +63,10 @@ get '/set/:value' do
 end
 
 get '/lametric' do
+  # TEMP: What is requesting this so often?
+  puts "REQUEST DUMP:"
+  pp request.env
+  
   # Quick-and-dirty way of duplicating the data structure.
   json = JSON.parse( JSON.dump(LAMETRIC_JSON) )
   json['frames'].push({

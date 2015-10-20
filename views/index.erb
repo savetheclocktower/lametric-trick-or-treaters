@@ -7,10 +7,7 @@
 
 <script type="text/javascript">
   $('increment').on('click', function () {
-    new Ajax.Updater('count', '/increment', {
-      
-      requestHeaders: { 'Accept': 'text/html' }
-    });
+    new Ajax.Updater('count', '/increment');
   });
 </script>
 

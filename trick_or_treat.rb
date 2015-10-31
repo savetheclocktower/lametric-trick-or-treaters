@@ -61,6 +61,11 @@ post '/increment_by/:value' do
   get_count.to_s
 end
 
+get '/increment_by/:value' do
+  increment_count_by(params['value'].to_i)
+  get_count.to_s
+end
+
 get '/reset' do
   reset_count
   get_count.to_s
@@ -72,9 +77,6 @@ get '/set/:value' do
 end
 
 get '/lametric' do
-  # TEMP: What is requesting this so often?
-  puts "USER AGENT: #{request.user_agent}"
-  puts "REQUEST DUMP:"
   pp request.env
   
   # Quick-and-dirty way of duplicating the data structure.

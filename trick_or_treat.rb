@@ -35,7 +35,7 @@ def increment_count
 end
 
 def increment_count_by(amount)
-  $redis.incr(KEY, amount).to_i
+  $redis.incrby(KEY, amount).to_i
 end
 
 def reset_count

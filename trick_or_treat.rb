@@ -34,6 +34,10 @@ def increment_count
   $redis.incr(KEY).to_i
 end
 
+def increment_count_by(amount)
+  $redis.incr(KEY, amount).to_i
+end
+
 def reset_count
   $redis.set(KEY, 0)
 end
@@ -49,6 +53,11 @@ end
 
 get '/increment' do
   increment_count
+  get_count.to_s
+end
+
+post '/increment_by/:value' do
+  increment_count_by(params['value'].to_i)
   get_count.to_s
 end
 

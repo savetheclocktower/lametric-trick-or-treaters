@@ -3,11 +3,25 @@
   <%= count %>
 </p>
 
-<button id="increment">Increment</button>
+
+<div class="buttons">
+  <button id="increment">Increment</button>
+  <div class="by-amount">
+    <button data-amount="2">+2</button>
+    <button data-amount="3">+3</button>
+    <button data-amount="4">+4</button>
+  </div>
+</div>
 
 <script type="text/javascript">
   $('increment').on('click', function () {
     new Ajax.Updater('count', '/increment');
+  });
+  
+  $('buttons').on('click', 'button[data-amount]', function (e) {
+    var element = e.element();
+    var amount = element.readAttribute('data-amount');
+    new Ajax.Updater('count', '/increment_by/' + amount);
   });
 </script>
 
@@ -21,5 +35,14 @@
     width: 100%;
     font-size: 24px;
     padding: 10px;
+  }
+  
+  .buttons .by-amount button {
+    width: 32%;
+    margin-right: 2%;
+  }
+  
+  .buttons .by-amount button:last-child {
+    margin-right: 0%;
   }
 </style>

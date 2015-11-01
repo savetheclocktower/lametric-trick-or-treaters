@@ -20,7 +20,8 @@ LAMETRIC_JSON = {
   frames: [
     {
       index: 0,
-      text: "trick or treat",
+      text: "sorry... we ran out",
+      # text: "trick or treat",
       icon: GHOST_ICON
     }
   ]

@@ -1,7 +1,8 @@
 # An app for keeping track of trick-or-treaters.
 # 
-# Hit /increment to increment the trick-or-treater count.
-# Hit /set to change the count manually.
+# Hit /increment to increment the trick-or-treater count by 1.
+# Hit /increment_by/X to add X to the total.
+# Hit /set/X to change the count manually.
 # Hit /reset to change it to 0.
 # 
 # The /lametric endpoint is what the device hits. It expects formatted JSON.
@@ -78,8 +79,6 @@ get '/set/:value' do
 end
 
 get '/lametric' do
-  pp request.env
-  
   # Quick-and-dirty way of duplicating the data structure.
   json = JSON.parse( JSON.dump(LAMETRIC_JSON) )
   json['frames'].push({

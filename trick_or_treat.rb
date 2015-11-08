@@ -68,8 +68,18 @@ get '/increment_by/:value' do
   get_count.to_s
 end
 
+post '/reset' do
+  reset_count
+  get_count.to_s
+end
+
 get '/reset' do
   reset_count
+  get_count.to_s
+end
+
+post '/set/:value' do
+  $redis.set(KEY, params['value'].to_i)
   get_count.to_s
 end
 

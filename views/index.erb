@@ -4,7 +4,7 @@
 </p>
 
 
-<div id="buttons">
+<div id="buttons" class="group">
   <button id="increment">+1</button>
   <div class="by-amount" class="group">
     <button data-amount="2">+2</button>
@@ -13,15 +13,65 @@
   </div>
 </div>
 
+
+<div id="footer">
+  <a href="#" class="toggle" data-collapsed-text="More" data-expanded-text="Less">More</a>
+  <div class="footer-inner" style="display: none;">
+    <form>
+      <fieldset>
+        <legend>More options</legend>
+        <p class="reset-to-zero">
+          <button>Reset to Zero</button>
+        </p>
+        <p class="set-value">
+          Set value: <input type="text" class="set-value-field"> <button>Set</button>
+        </p>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
 <script type="text/javascript">
-  $('increment').on('click', function () {
-    new Ajax.Updater('count', '/increment');
-  });
   
-  $('buttons').on('click', 'button[data-amount]', function (e) {
-    var element = e.element();
-    var amount = element.readAttribute('data-amount');
-    new Ajax.Updater('count', '/increment_by/' + amount);
-  });
+  (function () {
+    $('increment').on('click', function () {
+      new Ajax.Updater('count', '/increment');
+    });
+  
+    $('buttons').on('click', 'button[data-amount]', function (e) {
+      var element = e.element();
+      var amount = element.readAttribute('data-amount');
+      new Ajax.Updater('count', '/increment_by/' + amount);
+    });
+    
+    var footer = $('footer');
+  
+    footer.down('.toggle').on('click', function (e) {
+      e.stop();
+      var anchor = e.element();
+      var inner = footer.down('.footer-inner');
+      var isVisible = inner.visible();
+      var newText = anchor.readAttribute(isVisible ? 'data-collapsed-text' : 'data-expanded-text');
+      inner.toggle();
+      anchor.update(newText);
+    });
+  
+    footer.down('.reset-to-zero button').on('click', function (e) {
+      e.stop();
+      var sure = confirm("Are you sure you want to reset to zero?");
+      if (!sure) { return; }
+      new Ajax.Updater('count', '/reset');
+    });
+    
+    footer.down('.set-value button').on('click', function (e) {
+      e.stop();
+      var value = e.element().up('.set-value').down('.set-value-field').value;
+      value = parseInt(value, 10);
+      if (isNaN(value)) { return; }
+      new Ajax.Updater('count', '/set/' + value);
+    });
+  })();
+
+  
 </script>
 

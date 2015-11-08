@@ -29,8 +29,7 @@ This will display two "frames" on the LaMetric: first, it'll say "trick or treat
 
 When you increment the total via the frontend, the new number will show up on the device within a few seconds, depending on how often you configured the LaMetric app to poll.
 
-To reset the total, hit the `/reset` endpoint; to set an arbitrary value as the total, hit `/set/X`, where X is an integer. (I'm lazy and didn't add these to the interface; you can just type them into your browser.)
-
+A "More" link at the bottom of the page hides advanced controls — a way to reset the counter to zero, and a way to set an arbitrary value for the counter.
 
 # Adding it to your LaMetric
 

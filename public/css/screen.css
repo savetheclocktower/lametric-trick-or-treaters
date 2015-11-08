@@ -23,29 +23,50 @@ body {
   font-size: 36px !important;
 }
 
-#buttons {
+#buttons, #footer {
   width: 95%;
   margin: 0 auto;
+}
+
+#buttons {
   text-align: center;
 }
 
-#buttons button {
-  box-sizing: border-box;
-  font-size: 24px;
-  padding: 10px;
+  #buttons button {
+    box-sizing: border-box;
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  #buttons .by-amount {
+    margin-top: 1em;
+  }
+
+  #buttons .by-amount button {
+    display: block;
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+  }
+
+  #buttons .by-amount button:last-child {
+    margin-right: 0%;
+  }
+  
+  
+#footer {
+  margin-top: 2em;
+  text-align: right;
 }
 
-#buttons .by-amount {
-  margin-top: 1em;
-}
-
-#buttons .by-amount button {
-  display: block;
-  float: left;
-  width: 32%;
-  margin-right: 2%;
-}
-
-#buttons .by-amount button:last-child {
-  margin-right: 0%;
-}
+  #footer a {
+    color: #bbb;
+  }
+  
+  #footer a:hover {
+    color: #ccc;
+  }
+  
+  #footer form {
+    text-align: left;
+  }
